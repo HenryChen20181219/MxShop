@@ -13,7 +13,7 @@ from apps.goods.serializers import GoodsSerializer, CategorySerializer, HotWords
     IndexCategorySerializer
 
 
-class GoodsPagination(PageNumberPagination)
+class GoodsPagination(PageNumberPagination):
     page_size = 12
     page_size_query_param = "page_size"
     page_query_param = 'page'
@@ -57,6 +57,6 @@ class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = BannerSerializer
 
 
-class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet)
+class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = GoodsCategory.objects.filter(is_tab=True, name__in=["生鲜食品", "酒水饮料"])
     serializer_class = IndexCategorySerializer
